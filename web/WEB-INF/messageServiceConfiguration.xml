@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="configuredMessageService" class="j4f.server.services.classes.ExceptionMessageServiceImpl">
+        <property name="messageRepository">
+            <map key-type="java.lang.Class">
+                <entry key="j4f.server.exceptions.UsernameIsAlreadyExistsException" value="Это имя пользователя уже занято"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages/messages"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+</beans>
